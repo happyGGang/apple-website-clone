@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  letter-spacing: -0.02em;
+  background: white;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "SF Pro KR", "SF Pro Display", "SF Pro Icons", "Apple Gothic",
+    "HY Gulim", MalgunGothic, "HY Dotum", "Lexi Gulim", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+}
+
+/* 공통 */
+@layer components {
+  .section-gap:not(#scroll-section-0, #scroll-section-1, #scroll-section-3) {
+    @apply mt-[15vh];
+  }
+
+  .mobile-layout {
+    @apply min-w-[320px] px-4 mx-auto
+  }
+
+  #show-scene-0 #scroll-section-0 .sticky-wrapper,
+  #show-scene-1 #scroll-section-1 .sticky-wrapper,
+  #show-scene-2 #scroll-section-2 .sticky-wrapper,
+  #show-scene-3 #scroll-section-3 .sticky-wrapper,
+  #show-scene-4 #scroll-section-4 .sticky-wrapper,
+  #show-scene-5 #scroll-section-5 .sticky-wrapper,
+  #show-scene-6 #scroll-section-6 .sticky-wrapper {
+    @apply block will-change-transform-opacity;
+  }
+
+  .sticky-wrapper {
+    @apply fixed w-full left-0 right-0 mx-auto;
+  }
+
+  .desktop-text {
+    @apply hidden desktop:block;
+  }
+
+  .mobile-text {
+    @apply desktop:hidden;
+  }
+}
+
+/* 네비게이션 */
+@layer components {
+  .nav-blur {
+    @apply backdrop-blur-sm;
+  }
+
+  .nav-border {
+    @apply border-b border-zinc-300;
+  }
+
+  .global-nav {
+    @apply h-[44px] px-4 py-3 absolute top-0 left-0 w-full nav-blur bg-none z-50;
+  }
+
+  .local-nav {
+    @apply min-h-[54px] px-4 pt-3  absolute top-[45px] left-0 w-full nav-border nav-blur z-50
+          transition-[max-height] ease-in-out duration-500 bg-none;
+  }
+
+  .local-nav-sticky .local-nav {
+    @apply fixed top-0 bg-zinc-50/85;
+  }
+
+  .global-nav-links,
+  .local-nav-links {
+    @apply flex items-center max-w-screen-lg mx-auto h-full;
+  }
+
+  .local-nav-links .product-name {
+    @apply font-semibold mr-auto text-xl;
+  }
+
+  .local-nav-links .linked-button {
+    @apply bg-[#006EDB] rounded-2xl text-white px-[9px] py-[4px];
+  }
+
+  .local-nav-links .mobile-toggle-button {
+    @apply md:hidden;
+  }
+
+  .local-nav-links a:not(.product-name),
+  .local-nav-links button {
+    @apply text-xs ml-4;
+  }
+
+  .local-nav-links a:not(.product-name) {
+    @apply hidden md:block;
+  }
+
+  .local-mobile-links {
+    @apply flex flex-col my-5 md:hidden overflow-hidden
+          transform transition-[transform,opacity] ease-in duration-300;
+  }
+
+  .local-mobile-links a {
+    @apply text-sm mx-4 my-2;
+  }
+
+  .local-nav-links .mobile-toggle-button {
+    @apply lg:hidden;
+  }
+}
+
+/* 섹션2 : 비디오 재생 */
+@layer components {
+  .player-container {
+    @apply w-screen sticky top-0
+           h-screen desktop:overflow-hidden;
+  }
+
+  .message-item {
+    @apply min-w-[320px] w-[320px] top-[45vh] desktop:top-[35vh] opacity-0
+           desktop:min-w-full desktop:w-full desktop:flex desktop:justify-center desktop:items-center;
+  }
+
+  .message-item p {
+    @apply font-extrabold text-4xl leading-tight text-white h-auto
+           desktop:font-extrabold desktop:text-[4.4vw] desktop:leading-relaxed desktop:text-center;
+  }
+}
+
+/* 섹션3 : 중간 소개절 */
+@layer components {
+  #scroll-section-2 {
+    @apply min-w-[320px];
+    /* desktop:min-w-[70vw]; */
+  }
+
+  #scroll-section-2 .typo-wrapper {
+    @apply max-w-[20em] mx-auto
+    desktop:max-w-[75vw] desktop:mx-auto;
+  }
+
+  #scroll-section-2 small {
+    @apply font-semibold text-lg
+    desktop:font-bold desktop:text-[2vw];
+  }
+
+  #scroll-section-2 h2 {
+    @apply font-bold text-5xl mt-3 leading-tight
+    desktop:font-bold desktop:text-[10vw] desktop:mb-[.5em];
+  }
+
+  #scroll-section-2 p {
+    @apply font-bold text-lg mt-4 leading-6
+    desktop:font-bold desktop:text-[1.8vw] desktop:leading-normal desktop:ml-auto desktop:w-[50%];
+  }
+}
+
+/* 섹션3 : 스크롤 효과절 */
+@layer components {
+  #scroll-section-3 {
+    @apply min-w-[350px] w-[350px] mx-auto
+    desktop:min-w-full desktop:w-full desktop:h-full
+           2xl:pt-[3em];
+  }
+
+  #scroll-section-3 .product-image {
+    @apply pt-36 pb-14 min-w-[350px]
+    desktop:flex desktop:h-screen desktop:justify-center desktop:items-center
+           desktop:max-w-[45%] desktop:translate-x-0 desktop:mx-auto desktop:-z-10
+           animate-zoomIn;
+  }
+
+  .canvas-container {
+    @apply w-screen sticky top-0 bg-pink-200
+           h-screen desktop:overflow-hidden;
+  }
+
+  .desc-message-item {
+    @apply min-w-[300px] w-[300px] top-[35vh] text-start
+    desktop:min-w-full desktop:w-full desktop:flex desktop:justify-center desktop:items-center ;
+  }
+
+  .desc-message-item.a,
+  .desc-message-item.b,
+  .desc-message-item.c,
+  .desc-message-item.d {
+    @apply top-[75vh];
+  }
+
+  .desc-message-item.a {
+    @apply desktop:top-[15vh] desktop:mr-[10vw];
+  }
+
+  .desc-message-item.b {
+    @apply desktop:top-[50vh] desktop:mr-[20vw];
+  }
+
+
+  .desc-message-item.c {
+    @apply desktop:top-[25vh] desktop:ml-[25vw];
+  }
+
+  .desc-message-item.d {
+    @apply desktop:top-[60vh] desktop:ml-[33vw];
+  }
+
+  .desc-message-item p {
+    @apply text-[#86868b] font-bold min-w-[320px] w-[320px] mx-auto 
+    desktop:text-[1.2vw] desktop:w-[30vw] desktop:leading-relaxed;
+  }
+
+  .desc-message-item strong {
+    @apply text-black;
+  }
+
+  .desc-message-item-2 p {
+    @apply text-[#d1e8fd] font-bold min-w-[320px] w-[320px] mx-auto
+    desktop:text-[1.2vw] desktop:w-[30vw];
+  }
+
+  .desc-message-item-2 strong {
+    @apply text-white;
+  }
+
+}
+
+/* 섹션4 : 상세 소개절 */
+@layer components {
+}
+
+/* 섹션4 : 상단 마무리 */
+@layer components {
+}
+
+/* 섹션4 : 상품 캐러셀 */
+@layer components {
+}
+
+/* 레거시 */
+@layer components {
+
+  #scroll-section-6 {
+    @apply min-w-[320px] w-[320px] mx-auto
+           desktop:w-full;
+    /* desktop:min-w-[90vw]; */
+  }
+
+  #scroll-section-6 p {
+    @apply font-bold text-4xl mt-4 leading-tight
+           desktop:text-[5.5vw] desktop:max-w-[90vw] desktop:mx-auto;
+  }
+}
